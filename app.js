@@ -3,7 +3,17 @@ var theApp = angular.module('theApp',[]);
 
 theApp.controller('mainController', ['$scope', function mainController($scope){
 
-    $scope.someValue = 789;
+    $scope.selectedMovie = "none";
+    $scope.movies=["ironman", "darkcity", "angelheart", "spartacus"];
+
+    $scope.anotherValue = function(){
+        return "another value";
+    }
+ /*
+    $scope.$watch('selectedMovie', function(){
+       prompt("movie changed")
+    });
+   */
 
 }]);
 
@@ -11,22 +21,24 @@ theApp.controller('customController1',[ function customController1($scope){
 
 }]);
 
-theApp.directive('doSomethingCool', function(){
+theApp.directive('customButtons', function(){
     return{
+        //replace: true,
         restrict: 'E',
         scope: {
-            model: '=',
+            //replace: true,
             options: '=',
-            addlClasses: '@'
+            selected: '='
         },
-        controller: function($scope){
+        link: function($scope){
             $scope.activate = function(option){
-                $scope.model = option;
+                //prompt(option);
+                $scope.selected = option;
             };
         },
         //templateUrl: "templateFilePath",
-        template: "<button type='button' class='btn {{addlClasses}}' " +
-            "ng-class='{active: option == model}'" +
+        template:
+            "<button class='{{addlClasses}}' " +
             "ng-repeat='option in options' " +
             "ng-click='activate(option)'>{{option}}" +
             "</button>"
