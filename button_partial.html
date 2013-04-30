@@ -1,0 +1,7 @@
+<button class='cust-button {{addlClasses}}'
+        ng-repeat='option in options'
+        ng-class='{active: option == currentlyActive()}'
+        title='{{getTitle(option)}}'
+        ng-click='activate(option)'>
+    {{option}}
+</button>

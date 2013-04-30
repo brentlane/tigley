@@ -3,11 +3,11 @@ var theApp = angular.module('theApp',[]);
 
 theApp.controller('mainController', ['$scope', 'movieServices', function mainController($scope, movieServices){
 
-    //   $scope.selectedMovie = "none";
+    //   $scope.selectedMovie;
     $scope.movies = movieServices.getMovieList();
 
     var callbacks = $scope.movieCallbacks = {};
-    callbacks.setValue = function(movie){
+    callbacks.setActive = function(movie){
         $scope.selectedMovie = movie;
         var m_info = movieServices.getMovieInfo(movie);
         $scope.synopsis = m_info.synopsis;
@@ -16,7 +16,8 @@ theApp.controller('mainController', ['$scope', 'movieServices', function mainCon
         $scope.ratingColor = movieServices.getMovieColor(m_info.rating);
     }
 
-    callbacks.getValue = function(){
+    callbacks.getActive
+        = function(){
         return $scope.selectedMovie;
     }
 
@@ -26,13 +27,6 @@ theApp.controller('mainController', ['$scope', 'movieServices', function mainCon
         return m_info.tagline;
     }
 
-
-    /*
-     $scope.$watch('selectedMovie', function(){
-     prompt("movie changed")
-     });
-     */
-
 }]);
 
 
@@ -41,9 +35,8 @@ theApp.directive('customButtons', function(){
         //replace: true,
         restrict: 'E',
         scope: {
-            //replace: true,
             options: '=',
-            //           selected: '=',
+//           selected: '=',
             handlers: '=',
             addlClasses: '@'
 
@@ -51,12 +44,12 @@ theApp.directive('customButtons', function(){
         controller: function($scope){
             $scope.activate = function(option){
                 var callbacks = $scope.handlers;
-                callbacks.setValue(option);
+                callbacks.setActive(option);
             };
 
             $scope.currentlyActive = function(){
                 var callbacks = $scope.handlers;
-                return callbacks.getValue();
+                return callbacks.getActive();
             }
 
             $scope.getTitle = function(option){
@@ -66,7 +59,8 @@ theApp.directive('customButtons', function(){
             }
 
         },
-        //templateUrl: "templateFilePath",
+        // see the file, button_partial.html for a better read, but
+        // need to use the inline template since there's no web server
         template: "<button class='cust-button {{addlClasses}}' " +
             "ng-repeat='option in options' " +
             "ng-class='{active: option == currentlyActive()}'" +
