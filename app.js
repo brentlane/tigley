@@ -140,13 +140,13 @@ theApp.factory('movieServices',["$rootScope", function($rootScope){
                 color = "green";
                 break;
             case "R":
-                color = "orange"
+                color = "orange";
                 break;
             case "Unrated":
-                color = "red"
-                break
+                color = "red";
+                break;
             default:
-                color = "blue"
+                color = "blue";
                 break;
         }
         return color;
