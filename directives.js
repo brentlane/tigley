@@ -41,14 +41,3 @@ theApp.directive('customButtons', function(){
     };
 });
 
-theApp.directive( '$rootscope', ['movieServices', function($rootscope) {
-    return {
-        restrict: 'AC',
-        link: function (scope, element, attrs) {
-            $rootscope.$watch('selected', function(value){
-                console.log("at watch " + value);
-
-            });
-        }
-    }
-}]);
