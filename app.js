@@ -61,18 +61,16 @@ theApp.directive('customButtons', function(){
             addlClasses: '@'
 
         },
-        link: function(scope, elm, attrs){
-            scope.activate = function(option){
-                var callbacks = scope.handlers;
+        controller: function($scope){
+            $scope.activate = function(option){
+                var callbacks = $scope.handlers;
                 callbacks.setValue(option);
             };
 
-            scope.currentlyActive = function(){
-                var callbacks = scope.handlers;
+            $scope.currentlyActive = function(){
+                var callbacks = $scope.handlers;
                 return callbacks.getValue();
             }
-
-            //           elm.css('title', $cope.hoverText);
 
         },
         //templateUrl: "templateFilePath",
@@ -86,11 +84,11 @@ theApp.directive('customButtons', function(){
     };
 });
 
-theApp.directive( 'moviecoloring', ['movieServices', function(movieServices) {
+theApp.directive( '$rootscope', ['movieServices', function($rootscope) {
     return {
         restrict: 'AC',
         link: function (scope, element, attrs) {
-            scope.$watch(movieServices.selected, function(value){
+            $rootscope.$watch('selected', function(value){
                 console.log("at watch " + value);
 
             });
