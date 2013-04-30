@@ -3,15 +3,31 @@
 
 <head>
     <title>directive controller examples</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 <div ng-controller="mainController">
-    <div>Selected Movie:{{selectedMovie}}</div>
 
-<custom-buttons options="movies" selected="selectedMovie">
+    <custom-buttons options="movies"
+                    selected="selectedMovie"
+                    addl-classes="mybutton"
+                    handlers="callbacks"
+            >
+    </custom-buttons>
+    <div class="movie-selected">
+        <span class="label">You Have Selected:</span><span>{{selectedMovie}}</span>
+    </div>
 
-</custom-buttons>
+    <div class="movie-label">Synopsis:</div>
+    <div class="movie-info">
+        {{synopsis}}
+    </div>
+
+    <div class="movie-label">Quote:</div>
+    <div class="movie-info">
+        {{quote}}
+    </div>
 
 </div>
 

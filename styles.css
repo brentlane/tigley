@@ -1,0 +1,43 @@
+body{
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+}
+
+.label{
+    margin-right: 5px;
+}
+.cust-button{
+    background-color: lightgray;
+    margin: 5px 0px;
+
+}
+
+.cust-button.active{
+    background-color: greenyellow;
+}
+
+.mybutton{
+    height: 30px;
+    font-size: 16px;
+
+}
+
+.movie-selected{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.movie-label{
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+
+.movie-info{
+    margin-top:5px;
+    margin-bottom:15px;
+    max-width: 500px;
+    min-height: 50px;
+    padding: 5px;
+    background-color: #EEEEEE;
+}
