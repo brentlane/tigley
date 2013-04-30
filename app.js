@@ -13,30 +13,11 @@ theApp.controller('mainController', ['$scope', 'movieServices', function mainCon
         $scope.synopsis = m_info.synopsis;
         $scope.quote = m_info.quote;
         $scope.ratingLevel = m_info.rating;
-        $scope.ratingColor = $scope.getMovieColor(m_info.rating);
+        $scope.ratingColor = movieServices.getMovieColor(m_info.rating);
     }
 
     callbacks.getValue = function(){
         return $scope.selectedMovie;
-    }
-
-    $scope.getMovieColor = function(rating){
-        var color;
-        switch(rating){
-            case "PG13":
-                color = "green";
-                break;
-            case "R":
-                color = "orange"
-                break;
-            case "Unrated":
-                color = "red"
-                break
-            default:
-                color = "blue"
-                break;
-        }
-        return color;
     }
 
     /*
@@ -139,6 +120,25 @@ theApp.factory('movieServices',["$rootScope", function($rootScope){
 
     that.getMovieInfo = function(movie){
         return movieDB[movie];
+    }
+
+    that.getMovieColor = function(rating){
+        var color;
+        switch(rating){
+            case "PG13":
+                color = "green";
+                break;
+            case "R":
+                color = "orange"
+                break;
+            case "Unrated":
+                color = "red"
+                break
+            default:
+                color = "blue"
+                break;
+        }
+        return color;
     }
 
     return that;
