@@ -8,7 +8,7 @@ theApp.controller('mainController', ['$scope', 'movieServices', function mainCon
 
     var callbacks = $scope.movieCallbacks = {};
     callbacks.setValue = function(movie){
-        movieServices.selected = $scope.selectedMovie = movie;
+        $scope.selectedMovie = movie;
         var m_info = movieServices.getMovieInfo(movie);
         $scope.synopsis = m_info.synopsis;
         $scope.quote = m_info.quote;
@@ -17,7 +17,7 @@ theApp.controller('mainController', ['$scope', 'movieServices', function mainCon
     }
 
     callbacks.getValue = function(){
-        return movieServices.selected;
+        return $scope.selectedMovie;
     }
 
     $scope.getMovieColor = function(rating){
@@ -123,7 +123,7 @@ theApp.factory('movieServices',["$rootScope", function($rootScope){
             ,rating:"Unrated"
         }
     };
-    var selected = "None";
+
     var movieList = [];
     for( m in movieDB ){
         if(movieDB.hasOwnProperty(m)){
