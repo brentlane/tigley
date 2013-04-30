@@ -1,7 +1,8 @@
 
 var theApp = angular.module('theApp',[]);
 
-theApp.controller('mainController', ['$scope', 'movieServices', function mainController($scope, movieServices){
+theApp.controller('mainController', ['$scope', 'movieServices',
+    function mainController($scope, movieServices){
 
     //   $scope.selectedMovie;
     $scope.movies = movieServices.getMovieList();
@@ -16,8 +17,7 @@ theApp.controller('mainController', ['$scope', 'movieServices', function mainCon
         $scope.ratingColor = movieServices.getMovieColor(m_info.rating);
     }
 
-    callbacks.getActive
-        = function(){
+    callbacks.getActive = function(){
         return $scope.selectedMovie;
     }
 
