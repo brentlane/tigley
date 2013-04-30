@@ -20,6 +20,13 @@ theApp.controller('mainController', ['$scope', 'movieServices', function mainCon
         return $scope.selectedMovie;
     }
 
+    callbacks.titleText = function(movie){
+        console.log("movie: " + movie)
+        var m_info = movieServices.getMovieInfo(movie);
+        return m_info.tagline;
+    }
+
+
     /*
      $scope.$watch('selectedMovie', function(){
      prompt("movie changed")
@@ -37,7 +44,6 @@ theApp.directive('customButtons', function(){
             //replace: true,
             options: '=',
             //           selected: '=',
-            hoverText: '=',
             handlers: '=',
             addlClasses: '@'
 
@@ -53,11 +59,18 @@ theApp.directive('customButtons', function(){
                 return callbacks.getValue();
             }
 
+            $scope.getTitle = function(option){
+                console.log("option: " + option)
+                var callbacks = $scope.handlers;
+                return callbacks.titleText(option);
+            }
+
         },
         //templateUrl: "templateFilePath",
         template: "<button class='cust-button {{addlClasses}}' " +
             "ng-repeat='option in options' " +
             "ng-class='{active: option == currentlyActive()}'" +
+            "title='{{getTitle(option)}}'" +
             "ng-click='activate(option)'>" +
             "{{option}}" +
             "</button>"
@@ -85,23 +98,27 @@ theApp.factory('movieServices',["$rootScope", function($rootScope){
             synopsis: "A man struggles with memories of his past, including a wife he cannot remember, in a nightmarish world with no sun and run by beings with telekinetic powers who seek the souls of humans."
             ,quote:"Dr. Schreber: Remember John, never talk to strangers!"
             ,rating:"R"
+            ,tagline:"a film nior favorite"
         },
         "Ironman":{
             synopsis:"When wealthy industrialist Tony Stark is forced to build an armored suit after a life-threatening incident, he ultimately decides to use its technology to fight against evil."
             ,quote:"Tony Stark: I'd like to show you firsthand."
             ,rating:"PG13"
+            ,tagline: "Tony Stark, nuf said"
 
         },
         "Angel Heart": {
             synopsis:"Harry Angel has a new case, to find a man called Johnny Favourite. Except things aren't quite that simple, and Johnny doesn't want to be found. Let's just say that, amongst the period detail and beautiful scenery, it all gets really, really nasty."
             ,quote:"Louis Cyphre: The flesh is weak, Johnny. Only the soul is immortal."
             ,rating:"R"
+            ,tagline: "the young Mickie Rourke"
 
         },
         "Spartacus: 'Blood and Sand'":{
             synopsis:"Before Spartacus struck down his first opponent in the arena, there were many gladiators who passed though the gates onto the sand.'"
             ,quote:"Aurelia: He was not a perfect man; but he was mine! He was mine!"
             ,rating:"Unrated"
+            ,tagline: "wicked and intense"
         }
     };
 
