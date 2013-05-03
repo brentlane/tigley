@@ -11,7 +11,7 @@ Shows how to use :resolve in route config to trigger a broadcast message
 which is then caught by a controller outside the view to update the header.
 
 This is a client/server app. A node.js w/express server is included. You will
-need to install node and npm, then run 'nmp install'. To run the server it's 
+need to install node and npm, then run 'npm install'. To run the server it's 
 just 'node server.js' and then just open a browser to localhost:3009
 
 
