@@ -8,13 +8,14 @@ theApp.controller('mainController', ['$scope', 'movieServices',
     $scope.movies = movieServices.getMovieList();
 
     var callbacks = $scope.movieCallbacks = {};
+
     callbacks.setActive = function(movie){
-        $scope.selectedMovie = movie;
         var m_info = movieServices.getMovieInfo(movie);
         $scope.synopsis = m_info.synopsis;
         $scope.quote = m_info.quote;
         $scope.ratingLevel = m_info.rating;
         $scope.ratingColor = movieServices.getMovieColor(m_info.rating);
+        $scope.selectedMovie = movie;
     }
 
     callbacks.getActive = function(){

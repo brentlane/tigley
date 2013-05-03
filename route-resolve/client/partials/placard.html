@@ -1,0 +1,26 @@
+<ng-include src="'partials/menubar.html'"></ng-include>
+
+<div class="placard">
+    <div ng-show="configs.header.format.value=='welcome'"
+         class="intro-massive container">
+        <h1>FunkyCode</h1>
+        <div class="placard-text">
+            <p>Startup App number 9</p>
+            <h3>Building w/angular is finally like building a software application </h3>
+        </div>
+    </div>
+    <div ng-show="configs.header.format.value=='style1'"
+         class="intro-normal">
+        <div class="placard-text">
+            <h1>Funky Chunkey</h1>
+            <p>Because coding funky is the way to go </p>
+        </div>
+    </div>
+    <div ng-show="configs.header.format.value=='style2'"
+         class="intro-normal">
+        <div class="placard-text">
+            <h1>Funktastic</h1>
+            <p>Because coding funky is better than coding dull </p>
+        </div>
+    </div>
+</div>

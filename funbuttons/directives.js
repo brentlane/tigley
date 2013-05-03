@@ -16,6 +16,8 @@ theApp.directive('customButtons', function(){
                 callbacks.setActive(option);
             };
 
+            // $scope.selected = option;
+
             $scope.currentlyActive = function(){
                 var callbacks = $scope.handlers;
                 return callbacks.getActive();

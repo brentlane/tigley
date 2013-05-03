@@ -1,0 +1,29 @@
+<!doctype html>
+<!--
+<html lang="en" ng-app="myApp">
+-->
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="utf-8">
+    <title>Funky Team Prototype</title>
+    <link rel="stylesheet" href="components/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="components/bootstrap/bootstrap-responsive.css">
+    <link rel="stylesheet" href="css/app.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+</head>
+
+<body ng-controller="OuterController">
+
+<ng-include src="'partials/placard.html'"></ng-include>
+
+<div ng-view></div>
+
+<ng-include ng-include src="'partials/footer.html'"></ng-include>
+
+
+<script src="components/angular/angular.js"></script>
+<script src="js/app.js"></script>
+<script src="js/outer.js"></script>
+
+</body>
+</html>

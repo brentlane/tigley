@@ -9,11 +9,15 @@
 <body>
 <div ng-controller="mainController">
 
+    <!-- Custom directive, notice how the attributes
+    are used to pass in scope variables from mainController.
+    These are used inside the directive to dynamically generate
+    buttons and access callbacks that update mainController -->
     <custom-buttons options="movies"
                     handlers="movieCallbacks"
-                    addl-classes="mybutton"
-            >
+                    addl-classes="mybutton">
     </custom-buttons>
+
     <div class="movie-selected">
         <span class="movie-label">You Have Selected:</span>
         <span class="movie-em">{{selectedMovie}}</span>
